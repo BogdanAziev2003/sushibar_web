@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './Navbar.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = ({ pathname }) => {
+const Navbar = () => {
+  const { pathname } = useLocation();
+
   const navItems = [
     { path: '/', title: 'Все' },
     { path: '/branded-rolls', title: 'Фирменные Роллы' },

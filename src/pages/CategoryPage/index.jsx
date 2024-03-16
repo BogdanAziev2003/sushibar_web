@@ -6,7 +6,6 @@ import Search from '../../components/MainPageComponents/Search';
 import Navbar from '../../components/MainPageComponents/Navbar';
 
 const CategoryPage = ({ items }) => {
-  console.log(items);
   return (
     <div className={styles.main}>
       <Search />
