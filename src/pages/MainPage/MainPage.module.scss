@@ -11,9 +11,8 @@
   &__list {
     margin-top: 15px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
-    gap: 10px;
+    gap: 15px;
     justify-content: stretch;
   }
 }
