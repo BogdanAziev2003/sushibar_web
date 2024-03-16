@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './MainPage.module.scss';
 import Item from '../../components/MainPageComponents/Item';
+import ItemsNotFound from '../../components/MainPageComponents/Item/ItemsNotFound';
 
 const MainPage = ({ items }) => {
   const categories = [
@@ -22,28 +23,33 @@ const MainPage = ({ items }) => {
 
   return (
     <div className={styles.main}>
-      {categories.map((category) => (
-        <div key={category.id}>
-          {items.filter((item) => item.category === category.id).length > 0 && (
-            <div className={styles.main__category}>
-              <div
-                className={`${styles.main__title} ${
-                  category.id !== 0 && styles.marg_bot
-                }`}
-              >
-                <p>{category.title}</p>
+      {items.length > 0 ? (
+        categories.map((category) => (
+          <div key={category.id}>
+            {items.filter((item) => item.category === category.id).length >
+              0 && (
+              <div className={styles.main__category}>
+                <div
+                  className={`${styles.main__title} ${
+                    category.id !== 0 && styles.marg_bot
+                  }`}
+                >
+                  <p>{category.title}</p>
+                </div>
+                <div className={styles.main__list}>
+                  {items
+                    .filter((item) => item.category === category.id)
+                    .map((item, id) => (
+                      <Item key={id} {...item} />
+                    ))}
+                </div>
               </div>
-              <div className={styles.main__list}>
-                {items
-                  .filter((item) => item.category === category.id)
-                  .map((item, id) => (
-                    <Item key={id} {...item} />
-                  ))}
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
+            )}
+          </div>
+        ))
+      ) : (
+        <ItemsNotFound />
+      )}
     </div>
   );
 };

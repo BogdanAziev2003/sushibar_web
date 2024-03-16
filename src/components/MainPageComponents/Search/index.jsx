@@ -11,12 +11,13 @@ const Search = () => {
   useEffect(() => {
     const Debonce = setTimeout(() => {
       dispatch(setSearchValue(searchTerm));
-    }, 300);
+    }, 200);
 
     return () => clearTimeout(Debonce);
   }, [searchTerm, dispatch]);
 
   const handleSearchClear = () => {
+    dispatch(setSearchValue(''));
     setSearchTerm('');
   };
 
