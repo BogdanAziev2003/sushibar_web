@@ -4,7 +4,7 @@ import imageRoll from '../../../image/image.png';
 
 import styles from './Item.module.scss';
 
-const Item = () => {
+const Item = ({ ...item }) => {
   return (
     <div className={styles.item}>
       <div className={styles.item__image}>
@@ -13,7 +13,7 @@ const Item = () => {
       <div className={styles.item__wrapper}>
         <div className={styles.item__info}>
           <div className={styles.item__title}>
-            <p>Филадельфия</p>
+            <p>{item.name}</p>
             <div className={styles.item__gram}>
               <p>(250гр)</p>
             </div>

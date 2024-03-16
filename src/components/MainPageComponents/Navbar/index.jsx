@@ -5,17 +5,18 @@ import { Link } from 'react-router-dom';
 const Navbar = ({ pathname }) => {
   const navItems = [
     { path: '/', title: 'Все' },
+    { path: '/branded-rolls', title: 'Фирменные Роллы' },
+    { path: '/fried-rolls', title: 'Жареные Роллы' },
+    { path: '/classic-rolls', title: 'Классические Роллы' },
+    { path: '/baked-rolls', title: 'Запеченные Роллы' },
+    { path: '/sets', title: 'Сеты' },
+    { path: '/pizza', title: 'Пиццы' },
+    { path: '/wok', title: 'WOK' },
     { path: '/burgers', title: 'Бургеры' },
-    { path: '/shaurma', title: 'Шаурма' },
-    { path: '/tauk', title: 'Тауки' },
-    { path: '/hot-dogs', title: 'Хот-Доги' },
-    { path: '/sandwich', title: 'Сэндвичи' },
-    { path: '/firmen', title: 'Фирменые' },
-    { path: '/snack', title: 'Снэки' },
-    { path: '/sauce', title: 'Соусы' },
-    { path: '/modifiers', title: 'Добавки' },
-    { path: '/coffee', title: 'Кофе' },
-    { path: '/tea', title: 'Чаи' },
+    { path: '/sandwiches', title: 'Сэндвичи' },
+    { path: '/salads', title: 'Салаты' },
+    { path: '/snacks', title: 'Снэки' },
+    { path: '/dop', title: 'Дополнительно' },
     { path: '/drinks', title: 'Напитки' },
   ];
 
