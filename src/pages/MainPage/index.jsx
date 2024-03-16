@@ -1,8 +1,6 @@
 import React from 'react';
 
 import styles from './MainPage.module.scss';
-import Navbar from '../../components/MainPageComponents/Navbar';
-import Search from '../../components/MainPageComponents/Search';
 import Item from '../../components/MainPageComponents/Item';
 
 const MainPage = ({ items }) => {
@@ -24,25 +22,26 @@ const MainPage = ({ items }) => {
 
   return (
     <div className={styles.main}>
-      <Search />
-      <Navbar />
-
       {categories.map((category) => (
-        <div key={category.id} className={styles.main__category}>
-          <div
-            className={`${styles.main__title} ${
-              category.id !== 0 && styles.marg_bot
-            }`}
-          >
-            <p>{category.title}</p>
-          </div>
-          <div className={styles.main__list}>
-            {items
-              .filter((item) => item.category === category.id)
-              .map((item, id) => (
-                <Item key={id} {...item} />
-              ))}
-          </div>
+        <div key={category.id}>
+          {items.filter((item) => item.category === category.id).length > 0 && (
+            <div className={styles.main__category}>
+              <div
+                className={`${styles.main__title} ${
+                  category.id !== 0 && styles.marg_bot
+                }`}
+              >
+                <p>{category.title}</p>
+              </div>
+              <div className={styles.main__list}>
+                {items
+                  .filter((item) => item.category === category.id)
+                  .map((item, id) => (
+                    <Item key={id} {...item} />
+                  ))}
+              </div>
+            </div>
+          )}
         </div>
       ))}
     </div>

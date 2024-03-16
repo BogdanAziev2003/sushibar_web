@@ -5,7 +5,7 @@ import Layout from './components/Layout';
 import CartPage from './pages/CartPage';
 import MainPage from './pages/MainPage';
 import Categories from './pages/CategoryPage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getItems } from './redux/itemsSlice';
 
 const categoryesData = [
@@ -26,11 +26,17 @@ const categoryesData = [
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getItems());
   }, []);
 
   let { items } = useSelector((state) => state.items);
+  const { value } = useSelector((state) => state.search);
+
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(value.toLowerCase())
+  );
 
   items = items.map((item) => {
     let minPrice = item.sizes[0].price;
@@ -49,14 +55,16 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<MainPage items={items} />} />
+          <Route path="/" element={<MainPage items={filteredItems} />} />
           {categoryesData.map((cat) => (
             <Route
               key={cat.category}
               path={cat.path}
               element={
                 <Categories
-                  items={items.filter((item) => item.category === cat.category)}
+                  items={filteredItems.filter(
+                    (item) => item.category === cat.category
+                  )}
                 />
               }
             />

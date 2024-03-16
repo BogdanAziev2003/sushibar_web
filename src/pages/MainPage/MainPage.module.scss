@@ -44,6 +44,14 @@
   .search_icon {
     position: absolute;
     right: 20px;
+
+    .search__icon__clear {
+      margin-top: 3px;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
   }
 }
 

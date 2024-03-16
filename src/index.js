@@ -6,10 +6,12 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import App from './App';
 import items from './redux/itemsSlice';
+import search from './redux/searchSlice';
 
 const store = configureStore({
   reducer: {
     items,
+    search,
   },
 });
 
