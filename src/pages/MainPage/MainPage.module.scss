@@ -42,6 +42,7 @@
   }
 
   .search_icon {
+    color: #e31e25;
     position: absolute;
     right: 20px;
 
@@ -57,4 +58,22 @@
 
 .marg_bot {
   margin-top: 30px;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+
+  &__title {
+    font-size: 24px;
+  }
+
+  svg {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+  }
 }
