@@ -34,7 +34,7 @@ const itemsSlice = createSlice({
       const item = action.payload;
       const index = state.itemsInCart
         .reverse()
-        .findIndex((i) => i.id === item.id);
+        .findIndex((i) => i.id === item.id && i.price === item.price);
 
       if (index !== -1) {
         const deleteItem = state.itemsInCart.splice(index, 1)[0];
