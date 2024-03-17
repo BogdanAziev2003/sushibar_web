@@ -141,12 +141,12 @@
 
     &__text {
       color: #fff;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     &__input {
       position: relative;
-      margin-top: 8px;
+      margin-top: 5px;
       width: 100%;
 
       .input {
@@ -170,14 +170,18 @@
   }
 }
 
+.count__text {
+  font-size: 16px;
+}
+
 .count {
-  margin-top: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #343434;
   height: 35px;
   padding: 7px 10px;
+  margin-top: 5px;
   border-radius: 10px;
 
   &__number {
@@ -219,6 +223,7 @@
 }
 .order__text {
   margin-top: 25px;
+  margin-bottom: 15px;
   color: #372013;
   font-size: 18px;
   font-weight: 500;
@@ -304,7 +309,7 @@
     height: 80px;
     color: #fff;
     font-size: 12px;
-    margin-top: 10px;
+    margin-top: 5px;
     border-radius: 10px;
     padding: 10px 40px;
   }

@@ -5,6 +5,10 @@ import styles from '../../pages/CartPage/Cart.module.scss';
 const CountPribor = () => {
   return (
     <div className={styles.order}>
+      <div className={styles.count__text}>
+        <p>Укажите количество приборов</p>
+      </div>
+
       <div className={styles.count}>
         <div className={styles.count__button}>
           <svg
