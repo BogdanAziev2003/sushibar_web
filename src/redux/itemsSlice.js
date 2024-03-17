@@ -20,7 +20,13 @@ const initialState = {
 const itemsSlice = createSlice({
   name: 'items',
   initialState,
-  reducers: {},
+  reducers: {
+    addItem(state, action) {
+      const items = action.payload;
+      state.itemsInCart.push(items);
+      state.totalPrice += items.price;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getItems.pending, (state) => {
       state.isLoading = true;
@@ -34,5 +40,7 @@ const itemsSlice = createSlice({
     });
   },
 });
+
+export const { addItem } = itemsSlice.actions;
 
 export default itemsSlice.reducer;

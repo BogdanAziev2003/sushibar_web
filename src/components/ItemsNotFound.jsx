@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../../pages/MainPage/MainPage.module.scss';
+import styles from '../pages/MainPage/MainPage.module.scss';
 
 const ItemsNotFound = () => {
   return (

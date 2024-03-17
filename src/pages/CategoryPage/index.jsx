@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from '../MainPage/MainPage.module.scss';
 import Item from '../../components/MainPageComponents/Item';
-import ItemsNotFound from '../../components/MainPageComponents/Item/ItemsNotFound';
+import ItemsNotFound from '../../components/ItemsNotFound';
 
 const CategoryPage = ({ items }) => {
   return (

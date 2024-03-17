@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { addItem } from '../../../redux/itemsSlice';
 import imageRoll from '../../../image/image.png';
-
 import styles from './Item.module.scss';
+import ModalWindow from '../../ModalWindow';
 
 const Item = ({ ...item }) => {
+  const dispatch = useDispatch();
+  const { itemsInCart } = useSelector((state) => state.items);
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.item}>
       <div className={styles.item__image}>
@@ -29,6 +36,8 @@ const Item = ({ ...item }) => {
           <p>Добавить</p>
         </div>
       </div>
+
+      {open && <ModalWindow open={open} setOpen={setOpen} item={item} />}
     </div>
   );
 };

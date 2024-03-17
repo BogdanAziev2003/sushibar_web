@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import Layout from './components/Layout';
 import CartPage from './pages/CartPage';
 import MainPage from './pages/MainPage';
 import Categories from './pages/CategoryPage';
-import { useEffect, useState } from 'react';
 import { getItems } from './redux/itemsSlice';
 
 const categoryesData = [
