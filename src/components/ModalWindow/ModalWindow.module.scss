@@ -4,12 +4,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: calc(100vw - 20px);
-  background: #fff;
+  background: #0b0b0b;
   border-radius: 5px;
   padding: 15px;
+  border: 1px solid #e31e25;
 
   &__close__btn {
-    color: '#fe5e00';
     position: absolute;
     width: 30px;
     height: 30px;
@@ -37,10 +37,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &__gramm {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 100;
+    }
   }
 
   &__name {
-    color: #372013;
+    color: #fff;
     font-weight: 400;
     font-size: 18px;
 
@@ -55,7 +61,7 @@
 
       .modal__info__price {
         font-weight: 500;
-        color: #fe5e00;
+        color: #fff;
       }
     }
   }
@@ -66,11 +72,12 @@
     height: 30px;
     align-items: center;
     justify-content: space-around;
-    background-color: #ffefe6;
-    border-radius: 5px;
-    color: #fe5e00;
+    background-color: #343434;
+    border-radius: 10px;
+    color: #fff;
 
     &__minus {
+      margin-top: 5px;
       height: 100%;
       padding: 5px;
     }
@@ -247,8 +254,8 @@
     color: #fff;
     font-size: 20px;
     font-weight: 400;
-    border-radius: 45px;
-    background: linear-gradient(270deg, #fe5f02 1.17%, #fc9254 99.91%);
+    border-radius: 10px;
+    background: #e31e25;
     padding: 15px 27px;
     display: flex;
     align-items: center;

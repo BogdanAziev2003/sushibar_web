@@ -26,6 +26,18 @@ const itemsSlice = createSlice({
       state.itemsInCart.push(items);
       state.totalPrice += items.price;
     },
+    removeItem(state, action) {
+      const item = action.payload;
+      const index = state.itemsInCart
+        .reverse()
+        .findIndex((i) => i.id === item.id);
+
+      if (index !== -1) {
+        const deleteItem = state.itemsInCart.splice(index, 1)[0];
+        state.itemsInCart = state.itemsInCart.reverse();
+        state.totalPrice -= deleteItem.price;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getItems.pending, (state) => {
@@ -41,6 +53,6 @@ const itemsSlice = createSlice({
   },
 });
 
-export const { addItem } = itemsSlice.actions;
+export const { addItem, removeItem } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
