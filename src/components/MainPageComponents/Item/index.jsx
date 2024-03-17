@@ -81,7 +81,10 @@ const Item = ({ ...item }) => {
             <p>Лосось, сыр</p>
           </div>
           <div className={styles.item__price}>
-            <p>{item.price} ₽</p>
+            <p>
+              {item.sizes.length > 1 && <span>от </span>}
+              {item.price} ₽
+            </p>
           </div>
         </div>
         {inCart ? (
