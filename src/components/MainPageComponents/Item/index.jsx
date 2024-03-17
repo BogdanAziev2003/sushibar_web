@@ -12,6 +12,10 @@ const Item = ({ ...item }) => {
 
   const [open, setOpen] = useState(false);
 
+  const handleModalOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <div className={styles.item}>
       <div className={styles.item__image}>
@@ -32,7 +36,10 @@ const Item = ({ ...item }) => {
             <p>{item.price} ₽</p>
           </div>
         </div>
-        <div className={styles.item__button}>
+        <div
+          className={styles.item__button}
+          onClick={() => handleModalOpen(item)}
+        >
           <p>Добавить</p>
         </div>
       </div>
