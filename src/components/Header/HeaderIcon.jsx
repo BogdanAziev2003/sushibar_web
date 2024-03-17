@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
+import { useSelector } from 'react-redux';
 
 const HeaderIcon = ({ pathname }) => {
+  const { totalPrice } = useSelector((state) => state.items);
   return (
     <div className={styles.header__cart__icon}>
+      {totalPrice}
       {pathname !== '/cart' ? (
         <Link to="/cart">
           <svg
