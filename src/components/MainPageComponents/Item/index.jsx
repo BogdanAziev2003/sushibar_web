@@ -117,6 +117,8 @@ const Item = ({ ...item }) => {
           addItemInCart={addItemInCart}
           countForCart={countForCart}
           setCountForCart={setCountForCart}
+          updateItemForCart={updateItemForCart}
+          setUpdateItemForCart={setUpdateItemForCart}
         />
       )}
     </div>

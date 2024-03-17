@@ -4,6 +4,7 @@ import { IoMdCloseCircle } from 'react-icons/io';
 
 import styles from './ModalWindow.module.scss';
 import imageRoll from '../../image/image.png';
+import ModalItemSize from './ModalItemSize';
 
 const ModalWindow = ({
   open,
@@ -12,6 +13,8 @@ const ModalWindow = ({
   addItemInCart,
   setCountForCart,
   countForCart,
+  updateItemForCart,
+  setUpdateItemForCart,
 }) => {
   const handleClose = () => {
     setOpen(false);
@@ -44,12 +47,16 @@ const ModalWindow = ({
               <div className={styles.modal__name}>
                 <div className={styles.modal__info__item}>
                   <div className={styles.modal__info__name}>{item.name}</div>
-                  <div className={styles.modal__info__price}>
+                  {/* <div className={styles.modal__info__price}>
                     {item.price} ₽
-                  </div>
+                  </div> */}
                 </div>
                 <div className={styles.modal__info__gramm}>
-                  200 {item.quantity_type}
+                  {item?.sizes[0].quantity && (
+                    <>
+                      ({item?.sizes[0].quantity} {item.quantity_type})
+                    </>
+                  )}
                 </div>
               </div>
               <div className={styles.modal__amount}>
@@ -96,8 +103,14 @@ const ModalWindow = ({
                 </div>
               </div>
             </div>
+
+            <ModalItemSize
+              updateItemForCart={updateItemForCart}
+              setUpdateItemForCart={setUpdateItemForCart}
+            />
+
             <div className={styles.modal__button} onClick={handleModalAddItems}>
-              <p>Добавить за {item.price} ₽</p>
+              <p>Добавить за {countForCart * updateItemForCart.price} ₽</p>
             </div>
           </div>
         </Box>
