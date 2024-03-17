@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import imageRoll from '../../../image/image.png';
 import styles from './Item.module.scss';
+import imageRoll from '../../../image/image.png';
+import ButtonInCart from './ButtonInCart';
 import ModalWindow from '../../ModalWindow';
 import { addItem, removeItem } from '../../../redux/itemsSlice';
-import ButtonInCart from './ButtonInCart';
 
 const Item = ({ ...item }) => {
   const dispatch = useDispatch();
