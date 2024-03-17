@@ -15,14 +15,14 @@ const Item = ({ ...item }) => {
           <div className={styles.item__title}>
             <p>{item.name}</p>
             <div className={styles.item__gram}>
-              <p>(250гр)</p>
+              <p>(250{item?.quantity_type})</p>
             </div>
           </div>
           <div className={styles.item__containts}>
             <p>Лосось, сыр</p>
           </div>
           <div className={styles.item__price}>
-            <p>290 ₽</p>
+            <p>{item.price} ₽</p>
           </div>
         </div>
         <div className={styles.item__button}>

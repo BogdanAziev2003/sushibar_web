@@ -34,10 +34,6 @@ function App() {
   let { items } = useSelector((state) => state.items);
   const { value } = useSelector((state) => state.search);
 
-  const filteredItems = items.filter((item) =>
-    item.name.toLowerCase().includes(value.toLowerCase())
-  );
-
   items = items.map((item) => {
     let minPrice = item.sizes[0].price;
     for (let i = 1; i < item.sizes.length; i++) {
@@ -50,6 +46,10 @@ function App() {
       price: minPrice,
     };
   });
+
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(value.toLowerCase())
+  );
 
   return (
     <BrowserRouter>
