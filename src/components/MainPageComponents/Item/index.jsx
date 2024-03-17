@@ -74,7 +74,11 @@ const Item = ({ ...item }) => {
           <div className={styles.item__title}>
             <p>{item.name}</p>
             <div className={styles.item__gram}>
-              <p>(250{item?.quantity_type})</p>
+              {item?.sizes[0].quantity && (
+                <>
+                  ({item?.sizes[0].quantity} {item.quantity_type})
+                </>
+              )}
             </div>
           </div>
           <div className={styles.item__containts}>

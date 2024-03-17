@@ -21,6 +21,10 @@ const itemsSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
+    clearCart(state) {
+      state.itemsInCart = [];
+      state.totalPrice = 0;
+    },
     addItem(state, action) {
       const items = action.payload;
       state.itemsInCart.push(items);
@@ -38,6 +42,22 @@ const itemsSlice = createSlice({
         state.totalPrice -= deleteItem.price;
       }
     },
+    removeItemsByCompound(state, { payload }) {
+      const item = payload;
+      state.itemsInCart = state.itemsInCart.filter((i) => {
+        if (
+          i.id === item.id &&
+          i.price === item.price &&
+          JSON.stringify(i.modifiers) === JSON.stringify(item.modifiers) &&
+          JSON.stringify(i.sizes) === JSON.stringify(item.sizes) &&
+          JSON.stringify(i?.changes) === JSON.stringify(item?.changes)
+        ) {
+          state.totalPrice -= i.price;
+          return false;
+        }
+        return true;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getItems.pending, (state) => {
@@ -53,6 +73,7 @@ const itemsSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem } = itemsSlice.actions;
+export const { addItem, removeItem, removeItemsByCompound, clearCart } =
+  itemsSlice.actions;
 
 export default itemsSlice.reducer;
