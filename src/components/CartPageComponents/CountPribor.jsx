@@ -1,8 +1,13 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from '../../pages/CartPage/Cart.module.scss';
+import { addCount, minusCount } from '../../redux/countSlice';
 
 const CountPribor = () => {
+  const dispatch = useDispatch();
+  const { count } = useSelector((s) => s.count);
+
   return (
     <div className={styles.order}>
       <div className={styles.count__text}>
@@ -10,7 +15,10 @@ const CountPribor = () => {
       </div>
 
       <div className={styles.count}>
-        <div className={styles.count__button}>
+        <div
+          className={styles.count__button}
+          onClick={() => dispatch(minusCount())}
+        >
           <svg
             width="16"
             height="16"
@@ -24,8 +32,11 @@ const CountPribor = () => {
             />
           </svg>
         </div>
-        <div className={styles.count__number}>1</div>
-        <div className={styles.count__button}>
+        <div className={styles.count__number}>{count}</div>
+        <div
+          className={styles.count__button}
+          onClick={() => dispatch(addCount())}
+        >
           <svg
             width="16"
             height="16"

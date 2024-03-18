@@ -45,7 +45,14 @@ const CartPage = () => {
         <p>Оформление заказа</p>
       </div>
 
-      <CountPribor />
+      {itemsInCart.find(
+        (i) =>
+          i.category === 0 ||
+          i.category === 1 ||
+          i.category === 2 ||
+          i.category === 3 ||
+          i.category === 4
+      ) && <CountPribor />}
       <Phone />
       <PaymentMethod />
       <DeliveryMethod />

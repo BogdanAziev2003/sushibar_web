@@ -7,6 +7,7 @@ import App from './App';
 
 import items from './redux/itemsSlice';
 import search from './redux/searchSlice';
+import count from './redux/countSlice';
 import phone from './redux/phoneSlice';
 import paymethod from './redux/paymentSlice';
 import delmethod from './redux/deliverySlice';
@@ -17,6 +18,7 @@ const store = configureStore({
   reducer: {
     items,
     search,
+    count,
     phone,
     paymethod,
     delmethod,
