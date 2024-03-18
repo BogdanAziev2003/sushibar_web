@@ -8,6 +8,9 @@ import App from './App';
 import items from './redux/itemsSlice';
 import search from './redux/searchSlice';
 import phone from './redux/phoneSlice';
+import paymethod from './redux/paymentSlice';
+import delmethod from './redux/deliverySlice';
+import comment from './redux/commentSlice';
 import errors from './redux/errorsSlice';
 
 const store = configureStore({
@@ -15,6 +18,9 @@ const store = configureStore({
     items,
     search,
     phone,
+    paymethod,
+    delmethod,
+    comment,
     errors,
   },
 });

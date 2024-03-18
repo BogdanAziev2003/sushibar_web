@@ -1,8 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import styles from '../../pages/CartPage/Cart.module.scss';
+import { setComment } from '../../redux/commentSlice';
 
 const Comment = () => {
+  const dispatch = useDispatch();
+  const handlerCommentChange = (event) => {
+    dispatch(setComment(event.target.value));
+  };
+
   return (
     <div className={styles.comment}>
       <div className="comment__text">
@@ -30,6 +37,7 @@ const Comment = () => {
       <div className={styles.comment__text}>
         <textarea
           name=""
+          onChange={handlerCommentChange}
           placeholder="Укажите дополнительные пожелания или особенности вашего заказа здесь"
           maxLength="200"
         ></textarea>
