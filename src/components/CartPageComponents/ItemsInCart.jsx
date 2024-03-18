@@ -47,7 +47,7 @@ const ItemsInCart = ({ itemsInCart, totalPrice }) => {
                     {item?.sizes
                       .filter((size) => size?.selected)
                       .map((size, idx) => (
-                        <span key={idx}>{size?.title}</span>
+                        <span key={idx}>{size?.name}</span>
                       ))}
                     {item?.modifiers?.filter((mod) => mod?.selected).length >
                       0 && (
