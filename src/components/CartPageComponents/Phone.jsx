@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import IMask from 'imask';
 
 import styles from '../../pages/CartPage/Cart.module.scss';
+import { setPhone } from '../../redux/phoneSlice';
+import { setPhoneError } from '../../redux/errorsSlice';
 
 const Phone = () => {
+  const dispatch = useDispatch();
+  const { phone } = useSelector((state) => state.phone);
+  const [phoneValue, setPhoneValue] = useState(phone);
+  const phoneInputRef = useRef(null);
+
+  const handlerPhoneChange = (event) => {
+    setPhoneValue(event.target.value);
+  };
+
+  useEffect(() => {
+    if (phoneValue.length === 18) {
+      dispatch(setPhone(phoneValue));
+      dispatch(setPhoneError(false));
+      phoneInputRef.current.blur();
+    } else {
+      dispatch(setPhoneError(null));
+    }
+
+    if (phoneInputRef.current) {
+      const phoneMask = IMask(phoneInputRef.current, {
+        mask: '+7 (000) 000-00-00',
+      });
+    }
+  }, [phoneValue, dispatch]);
+
   return (
     <div className={styles.order}>
       <div className={styles.order__inner}>
@@ -17,6 +46,9 @@ const Phone = () => {
               id="phone"
               className={styles.input}
               placeholder="+7 (988) 831 99 00"
+              value={phoneValue}
+              onChange={handlerPhoneChange}
+              ref={phoneInputRef}
               inputMode="numeric"
               onPaste={(e) => {
                 e.preventDefault();
