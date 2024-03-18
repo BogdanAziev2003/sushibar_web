@@ -94,7 +94,6 @@
 
   &__choice {
     margin-top: 20px;
-    color: #fe660e;
     font-size: 15px;
     font-weight: 400;
     display: flex;
@@ -192,10 +191,9 @@
 
   &__changes {
     margin-top: 15px;
-
     .changes__title {
-      color: #372013;
-      font-size: 14px;
+      color: #ffffff;
+      font-size: 14spx;
       font-weight: 500;
       margin-bottom: 10px;
     }
@@ -208,13 +206,13 @@
       display: flex;
       width: 100%;
       height: 36px;
-      border: 1px solid #fe5e00;
-      border-radius: 5px;
+      border: 1.5px solid #e31e25;
+      border-radius: 10px;
 
       .name {
         font-size: 14px;
         font-weight: 400;
-        color: #836757;
+        color: #ffffff;
       }
 
       .dropdown__menu {
@@ -224,7 +222,7 @@
         display: block;
         max-height: 135px;
         z-index: 1;
-        background-color: #f9f9f9;
+        background-color: #151515;
         position: absolute;
         width: 100%;
         top: 100%;
@@ -233,7 +231,7 @@
       }
 
       .dropdown__item {
-        color: #372013;
+        color: #fff;
         align-items: center;
         justify-content: space-between;
         padding: 8px 10px 8px 10px;
@@ -241,7 +239,7 @@
         width: 100%;
         height: 39px;
         background-color: inherit;
-        border-bottom: 1px solid #ffd9c2;
+        border-bottom: 1.5px solid #a2a2a2;
 
         .dropdown__item__price {
           color: #ffa46e;

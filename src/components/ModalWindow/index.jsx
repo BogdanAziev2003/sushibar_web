@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Fade, Modal } from '@mui/material';
 import { IoMdCloseCircle } from 'react-icons/io';
 
 import styles from './ModalWindow.module.scss';
 import imageRoll from '../../image/image.png';
 import ModalItemSize from './ModalItemSize';
+import ModalItemChanges from './ModalItemChanges';
 
 const ModalWindow = ({
   open,
@@ -16,6 +17,8 @@ const ModalWindow = ({
   updateItemForCart,
   setUpdateItemForCart,
 }) => {
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -108,6 +111,22 @@ const ModalWindow = ({
               updateItemForCart={updateItemForCart}
               setUpdateItemForCart={setUpdateItemForCart}
             />
+
+            {item.changes[0].name &&
+              item.changes.map((change, idx) => (
+                <div key={idx}>
+                  <ModalItemChanges
+                    id={idx}
+                    item={item}
+                    changeItems={change.items}
+                    changeName={change.name}
+                    updateItemForCart={updateItemForCart}
+                    setUpdateItemForCart={setUpdateItemForCart}
+                    isOpenDropdown={isOpenDropdown}
+                    setIsOpenDropdown={setIsOpenDropdown}
+                  />
+                </div>
+              ))}
 
             <div className={styles.modal__button} onClick={handleModalAddItems}>
               <p>Добавить за {countForCart * updateItemForCart.price} ₽</p>
