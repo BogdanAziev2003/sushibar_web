@@ -35,7 +35,7 @@ const ItemsInCart = ({ itemsInCart, totalPrice }) => {
         {itemsInCart?.map((item, idx) => (
           <div key={idx} className={styles.item}>
             <div className={styles.item__image}>
-              <img src={cartItemImage} alt="image" />
+              <img src={cartItemImage} alt="imageeee" />
             </div>
             <div className={styles.item__wrapper}>
               <div className={styles.item__info}>
