@@ -82,8 +82,16 @@ const Item = ({ ...item }) => {
             </div>
           </div>
           <div className={styles.item__containts}>
-            <p>Лосось, сыр</p>
+            <p>
+              {item.contains.map((v, id) => (
+                <span key={id}>
+                  {id === 0 ? v.charAt(0).toUpperCase() + v.slice(1) : v}
+                  {id !== item.contains.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+            </p>
           </div>
+
           <div className={styles.item__price}>
             <p>
               {item.sizes.length > 1 && <span>от </span>}
