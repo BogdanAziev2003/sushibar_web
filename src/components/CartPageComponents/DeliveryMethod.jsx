@@ -4,6 +4,7 @@ import styles from '../../pages/CartPage/Cart.module.scss';
 import { setDeliveryMethod } from '../../redux/deliverySlice';
 import { setDelPrice } from '../../redux/deliverySlice';
 import { useDispatch, useSelector } from 'react-redux';
+import Addres from './Addres';
 
 const DeliveryMethod = () => {
   const dispatch = useDispatch();
@@ -80,6 +81,8 @@ const DeliveryMethod = () => {
           </div>
         </div>
       </div>
+
+      {delMethod === 'delivery' && <Addres delMethod={delMethod} />}
     </div>
   );
 };

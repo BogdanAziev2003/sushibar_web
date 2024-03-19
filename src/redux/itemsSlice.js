@@ -14,6 +14,7 @@ const initialState = {
   items: [],
   itemsInCart: [],
   totalPrice: 0,
+  delPrice: 0,
   isLoading: false,
 };
 
@@ -58,6 +59,22 @@ const itemsSlice = createSlice({
         return true;
       });
     },
+    plusDelPrice(state, { payload }) {
+      if (state.delPrice === 0) {
+        state.totalPrice += payload;
+      } else {
+        state.totalPrice = state.totalPrice - state.delPrice + payload;
+      }
+      state.delPrice = payload;
+    },
+    delPriceInStoreNull(state) {
+      if (state.totalPrice + state.delPrice === state.delPrice) {
+        state.delPrice = 0;
+      } else {
+        state.totalPrice -= state.delPrice;
+        state.delPrice = 0;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getItems.pending, (state) => {
@@ -73,7 +90,13 @@ const itemsSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, removeItemsByCompound, clearCart } =
-  itemsSlice.actions;
+export const {
+  addItem,
+  removeItem,
+  removeItemsByCompound,
+  clearCart,
+  plusDelPrice,
+  delPriceInStoreNull,
+} = itemsSlice.actions;
 
 export default itemsSlice.reducer;
