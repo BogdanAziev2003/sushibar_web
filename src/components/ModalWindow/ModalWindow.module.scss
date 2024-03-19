@@ -193,7 +193,7 @@
     margin-top: 15px;
     .changes__title {
       color: #ffffff;
-      font-size: 14spx;
+      font-size: 14px;
       font-weight: 500;
       margin-bottom: 10px;
     }
@@ -240,6 +240,10 @@
         height: 39px;
         background-color: inherit;
         border-bottom: 1.5px solid #a2a2a2;
+
+        &:last-child {
+          border-bottom: 0px;
+        }
 
         .dropdown__item__price {
           color: #ffa46e;
