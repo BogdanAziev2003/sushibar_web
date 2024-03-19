@@ -314,8 +314,13 @@
   &__icon {
     position: absolute;
     color: #e31e25;
-    top: 25px;
-    left: 7px;
+    top: 27px;
+    left: 10px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   textarea {
