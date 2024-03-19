@@ -9,6 +9,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &__logo {
+      svg {
+        width: 80px;
+        height: 70px;
+      }
+    }
   }
 
   &__cart__icon {

@@ -10,7 +10,7 @@ const Header = () => {
     <>
       <header className={styles.header}>
         <div className={styles.header__inner}>
-          <div className="header__logo logo">
+          <div className={styles.header__inner__logo}>
             <Link to="/">
               <svg
                 width="88"
