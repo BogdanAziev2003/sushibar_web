@@ -11,7 +11,8 @@
     justify-content: center;
     overflow: hidden;
     height: 150px;
-
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     img {
       max-width: 100%;
       min-height: 100%;

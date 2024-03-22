@@ -17,10 +17,10 @@ const Item = ({ ...item }) => {
   const itemList = itemsInCart.filter(
     (itemInCart) => itemInCart.id === item.id
   );
-  useEffect(() => {
-    if (itemsInCart.length === 0) return;
-    console.log(itemsInCart);
-  }, [itemsInCart]);
+  // useEffect(() => {
+  //   if (itemsInCart.length === 0) return;
+  //   console.log(itemsInCart);
+  // }, [itemsInCart]);
 
   const [open, setOpen] = useState(false);
   const handleModalOpen = (itemToCart) => {
