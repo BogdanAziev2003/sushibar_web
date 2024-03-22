@@ -15,7 +15,7 @@ const initialState = {
   itemsInCart: [],
   totalPrice: 0,
   delPrice: 0,
-  isLoading: false,
+  isLoading: true,
 };
 
 const itemsSlice = createSlice({

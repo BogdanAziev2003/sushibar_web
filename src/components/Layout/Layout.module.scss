@@ -1,0 +1,11 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 140px;
+
+  .loading__text {
+    color: #e31e25;
+    font-size: 22px;
+  }
+}
