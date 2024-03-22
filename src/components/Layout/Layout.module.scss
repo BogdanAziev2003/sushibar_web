@@ -1,13 +1,8 @@
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 140px;
+.skeleton__wrapper {
+  margin-top: 20px;
+}
 
-  .loading__text {
-    color: #e31e25;
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 4px;
-  }
+.skeleton {
+  width: 100%;
+  margin-bottom: 10px;
 }
