@@ -106,7 +106,9 @@ const Addres = () => {
     <div className="input-wrapper">
       <div className={styles.adress}>
         <div className={styles.adress__text}>
-          <p>Выберите город и улицу</p>
+          <p>
+            Выберите город и улицу <span className={styles.required}>*</span>
+          </p>
         </div>
         <div className={styles.adress__list}>
           <div className={styles.adress__input}>

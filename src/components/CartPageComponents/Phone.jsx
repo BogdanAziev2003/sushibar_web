@@ -37,7 +37,9 @@ const Phone = () => {
       <div className={styles.order__inner}>
         <div className={styles.phone}>
           <div className={styles.phone__text}>
-            <p>Введите номер телефона</p>
+            <p>
+              Введите номер телефона <span className={styles.required}>*</span>
+            </p>
           </div>
           <div className={styles.phone__input}>
             <input
