@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 import cartItemImage from '../../image/image.png';
@@ -12,6 +12,7 @@ import {
 import ClearCart from './ClearCart';
 
 const ItemsInCart = ({ itemsInCart, totalPrice }) => {
+  const { delPrice } = useSelector((s) => s.items);
   const dispatch = useDispatch();
   const handleAddItem = (item) => {
     const newItem = {
@@ -150,9 +151,17 @@ const ItemsInCart = ({ itemsInCart, totalPrice }) => {
       </div>
       <div className={styles.bill}>
         <div className={styles.bill__text}>
-          <p>
-            +Счет: <span>{totalPrice}</span> ₽
-          </p>
+          <div>
+            +Счет: <span>{totalPrice - delPrice}</span> ₽ <br />
+            {delPrice !== 0 && (
+              <>
+                +Доставка: <span>{delPrice}</span> ₽
+                <p className={styles.bill__text__total}>
+                  Итого: {totalPrice} ₽
+                </p>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
