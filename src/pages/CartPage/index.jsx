@@ -47,10 +47,7 @@ const CartPage = () => {
 
   const onSendData = useCallback(() => {
     // Errors
-    if (phoneIsFalse === null || phoneIsFalse === true) {
-      dispatch(setPhoneError(true));
-      return;
-    }
+    dispatch(setPhoneError(true));
 
     const data = {
       totalPrice: totalPrice,
