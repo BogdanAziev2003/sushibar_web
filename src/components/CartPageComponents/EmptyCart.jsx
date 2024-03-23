@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from '../../pages/CartPage/Cart.module.scss';
-import cartImage from '../../image/empty-cart.png';
+import cartImage from '../../image/empty-cart-test-1.png';
 
 const EmptyCart = () => {
   return (
