@@ -101,7 +101,7 @@
       justify-content: space-around;
       background: #0b0b0b;
       border-radius: 5px;
-      color: #e31e25;
+      color: #be0201;
 
       &__plus {
         height: 100%;
@@ -218,11 +218,11 @@
     .method__button {
       width: 20px;
       height: 20px;
-      border: 1px solid #e31e25;
+      border: 1px solid #be0201;
       border-radius: 6px;
 
       &__pressed {
-        background-color: #e31e25;
+        background-color: #be0201;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -266,7 +266,7 @@
   &__button {
     margin-right: 10px;
     padding: 8px;
-    background-color: #e31e25;
+    background-color: #be0201;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -319,7 +319,7 @@
 
   &__icon {
     position: absolute;
-    color: #e31e25;
+    color: #be0201;
     top: 27px;
     left: 10px;
 

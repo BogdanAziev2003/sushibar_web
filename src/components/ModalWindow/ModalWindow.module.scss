@@ -19,7 +19,7 @@
     cursor: pointer;
 
     svg {
-      color: #e31e25;
+      color: #be0201;
       width: 25px;
       height: 25px;
     }
@@ -156,8 +156,8 @@
     }
 
     .size__active {
-      background: #e31e25;
-      border: 1px solid #e31e25;
+      background: #be0201;
+      border: 1px solid #be0201;
       color: #fff;
     }
   }
@@ -214,7 +214,7 @@
       display: flex;
       width: 100%;
       height: 36px;
-      border: 1.5px solid #e31e25;
+      border: 1.5px solid #be0201;
       border-radius: 10px;
 
       .name {
@@ -265,7 +265,7 @@
     font-size: 20px;
     font-weight: 400;
     border-radius: 10px;
-    background: #e31e25;
+    background: #be0201;
     padding: 15px 27px;
     display: flex;
     align-items: center;
