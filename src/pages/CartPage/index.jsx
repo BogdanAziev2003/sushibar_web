@@ -10,10 +10,10 @@ import Comment from '../../components/CartPageComponents/Comment';
 import CountPribor from '../../components/CartPageComponents/CountPribor';
 import EmptyCart from '../../components/CartPageComponents/EmptyCart';
 import ItemsInCart from '../../components/CartPageComponents/ItemsInCart';
+import { setPhoneError, setAddressError } from '../../redux/errorsSlice';
 
 const CartPage = () => {
   const { tg } = useTelegram();
-  const { totalPrice } = useSelector((s) => s.items);
   const { itemsInCart } = useSelector((state) => {
     const itemsCount = state.items.itemsInCart.reduce((acc, item) => {
       const existingItem = acc.find(
@@ -34,6 +34,97 @@ const CartPage = () => {
 
     return { itemsInCart: itemsCount };
   });
+
+  const { address, delMethod } = useSelector((state) => state.delmethod);
+  const { totalPrice, delPrice } = useSelector((state) => state.items);
+  const { phone } = useSelector((state) => state.phone);
+  const { payMethod } = useSelector((state) => state.paymethod);
+  const { comment } = useSelector((state) => state.comment);
+
+  const onSendData = useCallback(() => {
+    // Errors
+    if (
+      phoneIsFalse === null ||
+      phoneIsFalse === true ||
+      (delMethod === 'delivery' &&
+        (addressIsFalse === null || addressIsFalse === true))
+    ) {
+      if (phoneIsFalse === null || phoneIsFalse === true) {
+        dispatch(setPhoneError(true));
+      }
+      if (
+        delMethod === 'delivery' &&
+        (addressIsFalse === null || addressIsFalse === true)
+      ) {
+        dispatch(setAddressError(true));
+      }
+      return;
+    }
+
+    const data = {
+      totalPrice: totalPrice,
+      cartPrice: totalPrice - delPrice,
+      delPrice,
+      address: address,
+      phone,
+      delMethod,
+      payMethod,
+      comment,
+      itemsInCart: itemsInCart.map((item) => {
+        const newItem = {
+          name: item.name,
+          price: item.price,
+          count: item.count,
+        };
+        if (item?.modifiers.length > 1) {
+          newItem.modifiers = item?.modifiers
+            .filter((modifier) => modifier?.selected)
+            .map((modifier) => ({
+              name: modifier?.name,
+            }));
+        } else if (
+          item?.modifiers.length === 1 &&
+          item?.modifiers[0] &&
+          item?.modifier[0].selected
+        ) {
+          newItem = item?.modifiers[0].name;
+        } else {
+          delete item?.modifiers;
+        }
+        if (item?.sizes?.length) {
+          newItem.sizes = item.sizes
+            .filter((size) => size.selected)
+            .map((size) => ({
+              title: size.title,
+            }));
+        }
+        if (item?.changes[0].name) {
+          newItem.changes = item.changes
+            .map((chs) => {
+              return chs.items
+                .filter((ch) => ch.selected)
+                .map((ch) => {
+                  const capitalizedChsName =
+                    chs.name.charAt(0).toUpperCase() + chs.name.slice(1);
+                  return `${capitalizedChsName}: ${ch.name}`;
+                });
+            })
+            .flat();
+        }
+
+        return newItem;
+      }),
+    };
+
+    tg.sendData(JSON.stringify(data));
+  }, [totalPrice, address, phone, delMethod, payMethod, comment, itemsInCart]);
+
+  useEffect(() => {
+    tg.onEvent('mainButtonClicked', onSendData);
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendData);
+    };
+  }, [onSendData, tg]);
 
   return (
     <div className={styles.wrapper}>
