@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { useTelegram } from '../../hooks/useTelegram';
 import styles from './Cart.module.scss';
 import Phone from '../../components/CartPageComponents/Phone';
 import PaymentMethod from '../../components/CartPageComponents/PaymentMethod';
@@ -11,6 +12,7 @@ import EmptyCart from '../../components/CartPageComponents/EmptyCart';
 import ItemsInCart from '../../components/CartPageComponents/ItemsInCart';
 
 const CartPage = () => {
+  const { tg } = useTelegram();
   const { totalPrice } = useSelector((s) => s.items);
   const { itemsInCart } = useSelector((state) => {
     const itemsCount = state.items.itemsInCart.reduce((acc, item) => {

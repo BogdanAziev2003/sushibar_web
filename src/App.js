@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
+import { useTelegram } from './hooks/useTelegram';
 import Layout from './components/Layout';
 import CartPage from './pages/CartPage';
 import MainPage from './pages/MainPage';
@@ -25,8 +26,13 @@ const categoryesData = [
 ];
 
 function App() {
-  const dispatch = useDispatch();
+  const { totalPriceButton, tg } = useTelegram();
+  useEffect(() => {
+    tg.ready();
+    tg.expand();
+  }, []);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getItems());
   }, []);
