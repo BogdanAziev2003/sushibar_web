@@ -38,7 +38,7 @@ const ModalWindow = ({
           }}
         >
           <div className={styles.modal}>
-            <div className={styles.modal__close__btn}>
+            <div className={styles.modal__close__btn} onClick={handleClose}>
               <svg
                 class="w-6 h-6 text-gray-800 dark:text-white"
                 aria-hidden="true"
