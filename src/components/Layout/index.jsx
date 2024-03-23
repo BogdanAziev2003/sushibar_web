@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -12,12 +12,14 @@ import { Skeleton } from './Skeleton';
 const Layout = () => {
   const { pathname } = useLocation();
   const { isLoading } = useSelector((s) => s.items);
+  const { open } = useSelector((s) => s.blur);
+
   const skeletons = [...new Array(5)].map((_, index) => (
     <Skeleton className={loadingSkeleton.skeleton} key={index} />
   ));
   return (
     <main>
-      <div className="wrapper">
+      <div className={`wrapper ${open && 'blur'}`}>
         <Header />
 
         {pathname !== '/cart' && (

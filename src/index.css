@@ -49,3 +49,8 @@ a {
 main {
   position: relative;
 }
+
+.blur {
+  filter: blur(4px);
+  transition: all 1.5s ease;
+}

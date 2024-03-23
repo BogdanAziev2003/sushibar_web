@@ -7,6 +7,7 @@ import imageRoll from '../../../image/image.png';
 import ButtonInCart from './ButtonInCart';
 import ModalWindow from '../../ModalWindow';
 import { addItem, removeItem } from '../../../redux/itemsSlice';
+import { setItOpen } from '../../../utils/blur';
 
 const Item = ({ ...item }) => {
   const dispatch = useDispatch();
@@ -17,12 +18,16 @@ const Item = ({ ...item }) => {
   const itemList = itemsInCart.filter(
     (itemInCart) => itemInCart.id === item.id
   );
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    dispatch(setItOpen(open));
+  }, [open]);
+
   // useEffect(() => {
   //   if (itemsInCart.length === 0) return;
   //   console.log(itemsInCart);
   // }, [itemsInCart]);
 
-  const [open, setOpen] = useState(false);
   const handleModalOpen = (itemToCart) => {
     setUpdateItemForCart(itemToCart);
     if (

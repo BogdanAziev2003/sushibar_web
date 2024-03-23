@@ -13,6 +13,7 @@ import paymethod from './redux/paymentSlice';
 import delmethod from './redux/deliverySlice';
 import comment from './redux/commentSlice';
 import errors from './redux/errorsSlice';
+import blur from './utils/blur';
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ const store = configureStore({
     delmethod,
     comment,
     errors,
+    blur,
   },
 });
 
