@@ -43,23 +43,23 @@ const CartPage = () => {
 
   const onSendData = useCallback(() => {
     // Errors
-    if (
-      phoneIsFalse === null ||
-      phoneIsFalse === true ||
-      (delMethod === 'delivery' &&
-        (addressIsFalse === null || addressIsFalse === true))
-    ) {
-      if (phoneIsFalse === null || phoneIsFalse === true) {
-        dispatch(setPhoneError(true));
-      }
-      if (
-        delMethod === 'delivery' &&
-        (addressIsFalse === null || addressIsFalse === true)
-      ) {
-        dispatch(setAddressError(true));
-      }
-      return;
-    }
+    // if (
+    //   phoneIsFalse === null ||
+    //   phoneIsFalse === true ||
+    //   (delMethod === 'delivery' &&
+    //     (addressIsFalse === null || addressIsFalse === true))
+    // ) {
+    //   if (phoneIsFalse === null || phoneIsFalse === true) {
+    //     dispatch(setPhoneError(true));
+    //   }
+    //   if (
+    //     delMethod === 'delivery' &&
+    //     (addressIsFalse === null || addressIsFalse === true)
+    //   ) {
+    //     dispatch(setAddressError(true));
+    //   }
+    //   return;
+    // }
 
     const data = {
       totalPrice: totalPrice,
