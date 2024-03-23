@@ -41,12 +41,14 @@ const CartPage = () => {
   const { payMethod } = useSelector((state) => state.paymethod);
   const { comment } = useSelector((state) => state.comment);
 
+  useEffect(() => {
+    console.log(phoneIsFalse);
+  }, [phoneIsFalse]);
+
   const onSendData = useCallback(() => {
     // Errors
     if (phoneIsFalse === null || phoneIsFalse === true) {
-      if (phoneIsFalse === null || phoneIsFalse === true) {
-        dispatch(setPhoneError(true));
-      }
+      dispatch(setPhoneError(true));
       return;
     }
 
