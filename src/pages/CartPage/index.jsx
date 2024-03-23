@@ -34,7 +34,7 @@ const CartPage = () => {
 
     return { itemsInCart: itemsCount };
   });
-
+  const { phoneIsFalse, addressIsFalse } = useSelector((state) => state.errors);
   const { address, delMethod } = useSelector((state) => state.delmethod);
   const { totalPrice, delPrice } = useSelector((state) => state.items);
   const { phone } = useSelector((state) => state.phone);
@@ -43,23 +43,23 @@ const CartPage = () => {
 
   const onSendData = useCallback(() => {
     // Errors
-    // if (
-    //   phoneIsFalse === null ||
-    //   phoneIsFalse === true ||
-    //   (delMethod === 'delivery' &&
-    //     (addressIsFalse === null || addressIsFalse === true))
-    // ) {
-    //   if (phoneIsFalse === null || phoneIsFalse === true) {
-    //     dispatch(setPhoneError(true));
-    //   }
-    //   if (
-    //     delMethod === 'delivery' &&
-    //     (addressIsFalse === null || addressIsFalse === true)
-    //   ) {
-    //     dispatch(setAddressError(true));
-    //   }
-    //   return;
-    // }
+    if (
+      phoneIsFalse === null ||
+      phoneIsFalse === true ||
+      (delMethod === 'delivery' &&
+        (addressIsFalse === null || addressIsFalse === true))
+    ) {
+      if (phoneIsFalse === null || phoneIsFalse === true) {
+        dispatch(setPhoneError(true));
+      }
+      if (
+        delMethod === 'delivery' &&
+        (addressIsFalse === null || addressIsFalse === true)
+      ) {
+        dispatch(setAddressError(true));
+      }
+      return;
+    }
 
     const data = {
       totalPrice: totalPrice,
