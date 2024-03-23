@@ -24,9 +24,14 @@
     justify-content: center;
     align-items: center;
 
-    &__count {
-      color: #fe5e00;
-      font-size: 14px;
+    svg {
+      width: 30px;
+      height: 30px;
+      color: #e31e25;
     }
+  }
+  &__count {
+    color: #e31e25;
+    font-size: 15px;
   }
 }
