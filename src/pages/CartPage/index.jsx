@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useTelegram } from '../../hooks/useTelegram';
 import styles from './Cart.module.scss';
@@ -14,6 +14,7 @@ import { setPhoneError, setAddressError } from '../../redux/errorsSlice';
 
 const CartPage = () => {
   const { tg } = useTelegram();
+  const dispatch = useDispatch();
   const { itemsInCart } = useSelector((state) => {
     const itemsCount = state.items.itemsInCart.reduce((acc, item) => {
       const existingItem = acc.find(
@@ -41,13 +42,25 @@ const CartPage = () => {
   const { payMethod } = useSelector((state) => state.paymethod);
   const { comment } = useSelector((state) => state.comment);
 
-  useEffect(() => {
-    console.log(phoneIsFalse);
-  }, [phoneIsFalse]);
-
   const onSendData = useCallback(() => {
     // Errors
-    dispatch(setPhoneError(true));
+    if (
+      phoneIsFalse === null ||
+      phoneIsFalse === true ||
+      (delMethod === 'delivery' &&
+        (addressIsFalse === null || addressIsFalse === true))
+    ) {
+      if (phoneIsFalse === null || phoneIsFalse === true) {
+        dispatch(setPhoneError(true));
+      }
+      if (
+        delMethod === 'delivery' &&
+        (addressIsFalse === null || addressIsFalse === true)
+      ) {
+        dispatch(setAddressError(true));
+      }
+      return;
+    }
 
     const data = {
       totalPrice: totalPrice,
