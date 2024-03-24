@@ -6,9 +6,16 @@ const ModalItemSize = ({ updateItemForCart, setUpdateItemForCart }) => {
   const sizes = updateItemForCart.sizes;
 
   useEffect(() => {
-    const updatedSizes = sizes.map((size, index) =>
-      index === 0 ? { ...size, selected: true } : { ...size, selected: false }
-    );
+    let updatedSizes = {};
+    if (updateItemForCart.category !== 5) {
+      updatedSizes = sizes.map((size, index) =>
+        index === 0 ? { ...size, selected: true } : { ...size, selected: false }
+      );
+    } else {
+      updatedSizes = sizes.map((size, index) =>
+        index === 1 ? { ...size, selected: true } : { ...size, selected: false }
+      );
+    }
     setUpdateItemForCart({
       ...updateItemForCart,
       sizes: updatedSizes,

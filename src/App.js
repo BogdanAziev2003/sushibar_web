@@ -41,6 +41,12 @@ function App() {
   const { value } = useSelector((state) => state.search);
 
   items = items.map((item) => {
+    if (item.category === 5) {
+      return {
+        ...item,
+        price: item.sizes[1].price,
+      };
+    }
     let minPrice = item.sizes[0].price;
     for (let i = 1; i < item.sizes.length; i++) {
       if (item.sizes[i].price < minPrice) {
