@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box, Fade, Modal } from '@mui/material';
-import { IoMdCloseCircle } from 'react-icons/io';
 
 import styles from './ModalWindow.module.scss';
 import imageRoll from '../../image/image.png';
@@ -64,9 +63,6 @@ const ModalWindow = ({
               <div className={styles.modal__name}>
                 <div className={styles.modal__info__item}>
                   <div className={styles.modal__info__name}>{item.name}</div>
-                  {/* <div className={styles.modal__info__price}>
-                    {item.price} ₽
-                  </div> */}
                 </div>
                 <div className={styles.modal__info__gramm}>
                   {item?.sizes[0].quantity && (
@@ -98,7 +94,7 @@ const ModalWindow = ({
                     />
                   </svg>
                 </div>
-                <div>
+                <div className={styles.modal__amount__count}>
                   <p>{countForCart}</p>
                 </div>
                 <div
