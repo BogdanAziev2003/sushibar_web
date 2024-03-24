@@ -41,6 +41,7 @@ const CartPage = () => {
   const { phone } = useSelector((state) => state.phone);
   const { payMethod } = useSelector((state) => state.paymethod);
   const { comment } = useSelector((state) => state.comment);
+  const { count } = useSelector((state) => state.count);
 
   const onSendData = useCallback(() => {
     // Errors
@@ -67,6 +68,7 @@ const CartPage = () => {
       cartPrice: totalPrice - delPrice,
       delPrice,
       address: address,
+      count,
       phone,
       delMethod,
       payMethod,
@@ -118,7 +120,16 @@ const CartPage = () => {
     };
 
     tg.sendData(JSON.stringify(data));
-  }, [totalPrice, address, phone, delMethod, payMethod, comment, itemsInCart]);
+  }, [
+    totalPrice,
+    address,
+    phone,
+    delMethod,
+    payMethod,
+    comment,
+    itemsInCart,
+    count,
+  ]);
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
