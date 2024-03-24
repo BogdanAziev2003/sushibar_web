@@ -185,7 +185,6 @@ const Addres = () => {
           {userAddress && (
             <DelPrice
               userAddress={userAddress}
-              userCoordinates={userCoordinates}
               deliveryPrice={deliveryPrice}
               delPrice={delPrice}
               setDeliveryPrice={setDeliveryPrice}
