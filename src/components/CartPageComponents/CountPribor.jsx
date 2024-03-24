@@ -16,7 +16,7 @@ const CountPribor = () => {
 
       <div className={styles.count}>
         <div
-          className={styles.count__button}
+          className={`${styles.count__button} ${styles.count__button__minus}`}
           onClick={() => dispatch(minusCount())}
         >
           <svg
@@ -34,7 +34,7 @@ const CountPribor = () => {
         </div>
         <div className={styles.count__number}>{count}</div>
         <div
-          className={styles.count__button}
+          className={`${styles.count__button} ${styles.count__button__plus}`}
           onClick={() => dispatch(addCount())}
         >
           <svg
