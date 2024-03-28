@@ -97,19 +97,17 @@ const CartPage = () => {
         if (item?.sizes?.length > 1) {
           newItem.sizes = item.sizes.find((size) => size.selected).name;
         }
-        // if (item?.changes[0].name) {
-        //   newItem.changes = item.changes
-        //     .map((chs) => {
-        //       return chs.items
-        //         .filter((ch) => ch.selected)
-        //         .map((ch) => {
-        //           const capitalizedChsName =
-        //             chs.name.charAt(0).toUpperCase() + chs.name.slice(1);
-        //           return `${capitalizedChsName}: ${ch.name}`;
-        //         });
-        //     })
-        //     .flat();
-        // }
+        if (item?.changes[0].name) {
+          newItem.changes = item.changes
+            .map((chs) => {
+              return chs.items
+                .filter((ch) => ch.selected)
+                .map((ch) => {
+                  return `${chs.name}: ${ch.name}`;
+                });
+            })
+            .flat();
+        }
 
         return newItem;
       }),
