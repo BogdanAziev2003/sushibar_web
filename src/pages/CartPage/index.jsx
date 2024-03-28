@@ -98,11 +98,9 @@ const CartPage = () => {
           newItem.sizes = item.sizes.find((size) => size.selected).name;
         }
         if (item?.changes[0].name) {
-          newItem.changes = item.changes
-            .map((chs) => {
-              return chs.items.find((ch) => ch.selected).name;
-            })
-            .flat();
+          newItem.changes = item.changes.items.find((chs) => {
+            chs.find((ch) => ch.selected).name;
+          });
         }
 
         return newItem;
