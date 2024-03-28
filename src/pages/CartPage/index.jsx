@@ -96,9 +96,9 @@ const CartPage = () => {
         // }
         if (item?.sizes?.length > 1) {
           newItem.sizes = item.sizes
-            .find((size) => size.selected)
+            .filter((size) => size.selected)
             .map((size) => ({
-              name: size.name,
+              title: size.name,
             }));
         }
         // if (item?.changes[0].name) {
