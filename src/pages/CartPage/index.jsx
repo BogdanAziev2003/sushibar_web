@@ -98,7 +98,9 @@ const CartPage = () => {
           newItem.sizes = item.sizes.find((size) => size.selected).name;
         }
         if (item?.changes[0].name) {
-          newItem.changes = `${item.changes.map((chs) => chs.name)} : лапша`;
+          newItem.changes = `${item.changes.map((chs) => chs.name)}: ${
+            item.changes.items.find((ch) => ch.selected).name
+          }`;
         }
 
         return newItem;
