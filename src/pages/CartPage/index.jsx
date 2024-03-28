@@ -94,7 +94,7 @@ const CartPage = () => {
         // } else {
         //   delete item?.modifiers;
         // }
-        if (item?.sizes?.length > 1) {
+        if (item?.sizes?.length) {
           newItem.sizes = item.sizes.find((size) => size.selected).name;
         }
         // if (item?.changes[0].name) {
