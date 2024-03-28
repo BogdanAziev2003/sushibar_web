@@ -146,7 +146,7 @@ const Addres = () => {
             <input
               className={styles.input}
               id="js-Field3"
-              placeholder="Суворова 12"
+              placeholder="Коминтерна 70"
               onClick={haldleInputOnClick}
             />
           </div>

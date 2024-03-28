@@ -94,7 +94,7 @@ const CartPage = () => {
         } else {
           delete item?.modifiers;
         }
-        if (item?.sizes?.length) {
+        if (item?.sizes?.length > 1) {
           newItem.sizes = item.sizes
             .filter((size) => size.selected)
             .map((size) => ({
