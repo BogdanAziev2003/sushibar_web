@@ -79,41 +79,37 @@ const CartPage = () => {
           price: item.price,
           count: item.count,
         };
-        if (item?.modifiers.length > 1) {
-          newItem.modifiers = item?.modifiers
-            .filter((modifier) => modifier?.selected)
-            .map((modifier) => ({
-              name: modifier?.name,
-            }));
-        } else if (
-          item?.modifiers.length === 1 &&
-          item?.modifiers[0] &&
-          item?.modifier[0].selected
-        ) {
-          newItem = item?.modifiers[0].name;
-        } else {
-          delete item?.modifiers;
-        }
+        // if (item?.modifiers.length > 1) {
+        //   newItem.modifiers = item?.modifiers
+        //     .filter((modifier) => modifier?.selected)
+        //     .map((modifier) => ({
+        //       name: modifier?.name,
+        //     }));
+        // } else if (
+        //   item?.modifiers.length === 1 &&
+        //   item?.modifiers[0] &&
+        //   item?.modifier[0].selected
+        // ) {
+        //   newItem = item?.modifiers[0].name;
+        // } else {
+        //   delete item?.modifiers;
+        // }
         if (item?.sizes?.length > 1) {
-          newItem.sizes = item.sizes
-            .filter((size) => size.selected)
-            .map((size) => ({
-              title: size.title,
-            }));
+          newItem.sizes = { title: 'Hello' };
         }
-        if (item?.changes[0].name) {
-          newItem.changes = item.changes
-            .map((chs) => {
-              return chs.items
-                .filter((ch) => ch.selected)
-                .map((ch) => {
-                  const capitalizedChsName =
-                    chs.name.charAt(0).toUpperCase() + chs.name.slice(1);
-                  return `${capitalizedChsName}: ${ch.name}`;
-                });
-            })
-            .flat();
-        }
+        // if (item?.changes[0].name) {
+        //   newItem.changes = item.changes
+        //     .map((chs) => {
+        //       return chs.items
+        //         .filter((ch) => ch.selected)
+        //         .map((ch) => {
+        //           const capitalizedChsName =
+        //             chs.name.charAt(0).toUpperCase() + chs.name.slice(1);
+        //           return `${capitalizedChsName}: ${ch.name}`;
+        //         });
+        //     })
+        //     .flat();
+        // }
 
         return newItem;
       }),

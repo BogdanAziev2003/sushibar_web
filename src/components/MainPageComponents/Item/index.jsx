@@ -23,10 +23,10 @@ const Item = ({ ...item }) => {
     dispatch(setItOpen(open));
   }, [open]);
 
-  // useEffect(() => {
-  //   if (itemsInCart.length === 0) return;
-  //   console.log(itemsInCart);
-  // }, [itemsInCart]);
+  useEffect(() => {
+    if (itemsInCart.length === 0) return;
+    console.log(itemsInCart);
+  }, [itemsInCart]);
 
   const handleModalOpen = (itemToCart) => {
     setUpdateItemForCart(itemToCart);
