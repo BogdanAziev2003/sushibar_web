@@ -95,7 +95,11 @@ const CartPage = () => {
         //   delete item?.modifiers;
         // }
         if (item?.sizes?.length > 1) {
-          newItem.sizes = { title: 'Hello' };
+          newItem.sizes = item.sizes
+            .find((size) => size.selected)
+            .map((size) => ({
+              name: size.name,
+            }));
         }
         // if (item?.changes[0].name) {
         //   newItem.changes = item.changes
