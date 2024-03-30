@@ -26,7 +26,7 @@ const categoryesData = [
 ];
 
 function App() {
-  const { totalPriceButton, tg } = useTelegram();
+  const { tg } = useTelegram();
   useEffect(() => {
     tg.ready();
     tg.expand();
@@ -77,6 +77,8 @@ function App() {
                   items={filteredItems.filter(
                     (item) => item.category === cat.category
                   )}
+                  filteredItems={filteredItems}
+                  value={value}
                 />
               }
             />
