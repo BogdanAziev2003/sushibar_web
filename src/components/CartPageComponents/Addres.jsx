@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from '../../pages/CartPage/Cart.module.scss';
@@ -16,6 +16,7 @@ const Addres = () => {
   const [userCoordinates, setUserCoordinates] = useState(false);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
   const [deliveryPriceNotFound, setDeliveryPriceNotFound] = useState(false);
+  const addressRef = useRef(null);
 
   const optionsAuto = {
     fields: [
@@ -102,6 +103,12 @@ const Addres = () => {
     setAddressNotFound(false);
   };
 
+  useEffect(() => {
+    if (addressIsFalse) {
+      addressRef.current.focus();
+    }
+  }, [addressIsFalse]);
+
   return (
     <div className="input-wrapper">
       <div className={styles.adress}>
@@ -140,6 +147,7 @@ const Addres = () => {
               id="js-Field2"
               placeholder="Беслан"
               onClick={haldleInputOnClick}
+              ref={addressRef}
             />
           </div>
           <div className={styles.adress__input}>
