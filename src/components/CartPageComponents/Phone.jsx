@@ -26,6 +26,13 @@ const Phone = () => {
       dispatch(setPhoneError(null));
     }
 
+    if (phoneIsFalse) {
+      phoneInputRef.current.focus();
+      document
+        .querySelector(`.${styles.cart__error}`)
+        .scrollIntoView({ behavior: 'smooth' });
+    }
+
     if (phoneInputRef.current) {
       const phoneMask = IMask(phoneInputRef.current, {
         mask: '+7 (000) 000-00-00',
