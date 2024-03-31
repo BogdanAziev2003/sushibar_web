@@ -5,8 +5,10 @@ import styles from '../../pages/CartPage/Cart.module.scss';
 import { setAddressError } from '../../redux/errorsSlice';
 import { setDelPrice } from '../../redux/deliverySlice';
 import DelPrice from './DelPrice';
+import { useTelegram } from '../../hooks/useTelegram';
 
 const Addres = () => {
+  const { tg } = useTelegram();
   const dispatch = useDispatch();
   const { totalPrice } = useSelector((state) => state.items);
   const { addressIsFalse, phoneIsFalse } = useSelector((state) => state.errors);
@@ -107,7 +109,7 @@ const Addres = () => {
     if (addressIsFalse && !phoneIsFalse) {
       addressRef.current.focus();
     }
-  }, [addressIsFalse]);
+  }, [tg]);
 
   return (
     <div className="input-wrapper">

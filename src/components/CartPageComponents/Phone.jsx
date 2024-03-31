@@ -5,13 +5,15 @@ import IMask from 'imask';
 import styles from '../../pages/CartPage/Cart.module.scss';
 import { setPhone } from '../../redux/phoneSlice';
 import { setPhoneError } from '../../redux/errorsSlice';
+import { useTelegram } from '../../hooks/useTelegram';
 
 const Phone = () => {
   const dispatch = useDispatch();
+  const { tg } = useTelegram();
   const { phone } = useSelector((state) => state.phone);
   const [phoneValue, setPhoneValue] = useState(phone);
   const phoneInputRef = useRef(null);
-  const { phoneIsFalse } = useSelector((state) => state.errors);
+  const { phoneIsFalse, addressIsFalse } = useSelector((state) => state.errors);
 
   const handlerPhoneChange = (event) => {
     setPhoneValue(event.target.value);
