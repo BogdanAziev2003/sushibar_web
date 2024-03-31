@@ -385,3 +385,43 @@
 .required {
   color: red;
 }
+
+.promocod {
+  &__text {
+    color: #fff;
+    font-size: 13px;
+  }
+  &__input {
+    position: relative;
+    margin-top: 5px;
+    width: 100%;
+
+    .input {
+      height: 35px;
+      width: 100%;
+      background: #343434;
+      border: 0;
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 14px;
+      padding-left: 35px;
+
+      &:focus {
+        outline: black;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 56%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #be0201;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
