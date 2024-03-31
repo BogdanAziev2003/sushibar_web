@@ -36,10 +36,15 @@ const Phone = () => {
   }, [phoneValue, dispatch]);
 
   useEffect(() => {
-    if (phoneIsFalse) {
-      phoneInputRef.current.focus();
-    }
-  }, [Telegram.WebApp]);
+    tg.onEvent('mainButtonClicked', () => {
+      if (phoneIsFalse) {
+        phoneInputRef.current.focus();
+      }
+    });
+    return () => {
+      tg.offEvent('mainButtonClicked', () => {});
+    };
+  }, [tg]);
 
   return (
     <div className={styles.order}>

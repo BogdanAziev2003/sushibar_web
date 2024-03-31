@@ -9,6 +9,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 
 const Addres = () => {
   const dispatch = useDispatch();
+  const { tg } = useTelegram();
   const { totalPrice } = useSelector((state) => state.items);
   const { addressIsFalse } = useSelector((state) => state.errors);
   const { phone } = useSelector((s) => s.phone);
@@ -106,10 +107,15 @@ const Addres = () => {
   };
 
   useEffect(() => {
-    if (addressIsFalse && phone) {
-      addressRef.current.focus();
-    }
-  }, [Telegram.WebApp]);
+    tg.onEvent('mainButtonClicked', () => {
+      if (addressIsFalse && phone) {
+        addressRef.current.focus();
+      }
+    });
+    return () => {
+      tg.offEvent('mainButtonClicked', () => {});
+    };
+  }, [tg]);
 
   return (
     <div className="input-wrapper">
