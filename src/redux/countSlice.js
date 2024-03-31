@@ -6,6 +6,9 @@ const countSlice = createSlice({
     count: 1,
   },
   reducers: {
+    zeroCount(state) {
+      state.count = 1;
+    },
     addCount(state) {
       state.count++;
     },
@@ -17,6 +20,6 @@ const countSlice = createSlice({
   },
 });
 
-export const { addCount, minusCount } = countSlice.actions;
+export const { addCount, minusCount, zeroCount } = countSlice.actions;
 
 export default countSlice.reducer;

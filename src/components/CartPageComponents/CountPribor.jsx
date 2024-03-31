@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from '../../pages/CartPage/Cart.module.scss';
-import { addCount, minusCount } from '../../redux/countSlice';
+import { addCount, minusCount, zeroCount } from '../../redux/countSlice';
 
 const CountPribor = () => {
   const dispatch = useDispatch();
   const { count } = useSelector((s) => s.count);
+
+  useEffect(() => {
+    return () => {
+      dispatch(zeroCount());
+    };
+  }, [dispatch]);
 
   return (
     <div className={styles.order}>
