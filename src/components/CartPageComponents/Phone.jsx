@@ -36,15 +36,10 @@ const Phone = () => {
   }, [phoneValue, dispatch]);
 
   useEffect(() => {
-    tg.onEvent('mainButtonClicked', () => {
-      if (phoneIsFalse) {
-        phoneInputRef.current.focus();
-      }
-    });
-    return () => {
-      tg.offEvent('mainButtonClicked', () => {});
-    };
-  }, [tg]);
+    if (phoneIsFalse) {
+      phoneInputRef.current.focus();
+    }
+  }, [phoneIsFalse]);
 
   return (
     <div className={styles.order}>

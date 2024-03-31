@@ -8,8 +8,8 @@ import DelPrice from './DelPrice';
 import { useTelegram } from '../../hooks/useTelegram';
 
 const Addres = () => {
-  const dispatch = useDispatch();
   const { tg } = useTelegram();
+  const dispatch = useDispatch();
   const { totalPrice } = useSelector((state) => state.items);
   const { addressIsFalse } = useSelector((state) => state.errors);
   const { phone } = useSelector((s) => s.phone);
@@ -107,15 +107,10 @@ const Addres = () => {
   };
 
   useEffect(() => {
-    tg.onEvent('mainButtonClicked', () => {
-      if (addressIsFalse && phone) {
-        addressRef.current.focus();
-      }
-    });
-    return () => {
-      tg.offEvent('mainButtonClicked', () => {});
-    };
-  }, [tg]);
+    if (addressIsFalse && phone) {
+      addressRef.current.focus();
+    }
+  }, [addressIsFalse]);
 
   return (
     <div className="input-wrapper">
