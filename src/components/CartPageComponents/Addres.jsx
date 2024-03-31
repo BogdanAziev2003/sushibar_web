@@ -8,7 +8,6 @@ import DelPrice from './DelPrice';
 import { useTelegram } from '../../hooks/useTelegram';
 
 const Addres = () => {
-  const { tg } = useTelegram();
   const dispatch = useDispatch();
   const { totalPrice } = useSelector((state) => state.items);
   const { addressIsFalse } = useSelector((state) => state.errors);
@@ -110,7 +109,7 @@ const Addres = () => {
     if (addressIsFalse && phone) {
       addressRef.current.focus();
     }
-  }, [tg]);
+  }, [Telegram.WebApp.onEvent('mainButtonClicked', () => {})]);
 
   return (
     <div className="input-wrapper">
