@@ -9,7 +9,7 @@ import DelPrice from './DelPrice';
 const Addres = () => {
   const dispatch = useDispatch();
   const { totalPrice } = useSelector((state) => state.items);
-  const { addressIsFalse } = useSelector((state) => state.errors);
+  const { addressIsFalse, phoneIsFalse } = useSelector((state) => state.errors);
   const { delPrice } = useSelector((state) => state.delmethod);
   const [addressNotFound, setAddressNotFound] = useState(false);
   const [userAddress, setUserAddress] = useState('');
@@ -17,7 +17,6 @@ const Addres = () => {
   const [deliveryPrice, setDeliveryPrice] = useState(0);
   const [deliveryPriceNotFound, setDeliveryPriceNotFound] = useState(false);
   const addressRef = useRef(null);
-  const houseRef = useRef(null);
 
   const optionsAuto = {
     fields: [
@@ -105,10 +104,7 @@ const Addres = () => {
   };
 
   useEffect(() => {
-    console.log(addressNotFound);
-    if (addressIsFalse && addressNotFound === 'Введите улицу и дом') {
-      houseRef.current.focus();
-    } else if (addressIsFalse) {
+    if (addressIsFalse && !phoneIsFalse) {
       addressRef.current.focus();
     }
   }, [addressIsFalse]);
@@ -160,7 +156,6 @@ const Addres = () => {
               id="js-Field3"
               placeholder="Коминтерна 70"
               onClick={haldleInputOnClick}
-              ref={houseRef}
             />
           </div>
           <input
