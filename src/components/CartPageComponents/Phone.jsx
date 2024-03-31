@@ -39,7 +39,7 @@ const Phone = () => {
     if (phoneIsFalse) {
       phoneInputRef.current.focus();
     }
-  }, [Telegram.WebApp.onEvent('mainButtonClicked', () => {})]);
+  }, [tg.onEvent('mainButtonClicked')]);
 
   return (
     <div className={styles.order}>
