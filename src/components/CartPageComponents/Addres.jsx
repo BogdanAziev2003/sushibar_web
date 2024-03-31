@@ -11,7 +11,8 @@ const Addres = () => {
   const { tg } = useTelegram();
   const dispatch = useDispatch();
   const { totalPrice } = useSelector((state) => state.items);
-  const { addressIsFalse, phoneIsFalse } = useSelector((state) => state.errors);
+  const { addressIsFalse } = useSelector((state) => state.errors);
+  const { phone } = useSelector((s) => s.phone);
   const { delPrice } = useSelector((state) => state.delmethod);
   const [addressNotFound, setAddressNotFound] = useState(false);
   const [userAddress, setUserAddress] = useState('');
@@ -106,7 +107,7 @@ const Addres = () => {
   };
 
   useEffect(() => {
-    if (addressIsFalse && phoneIsFalse) {
+    if (addressIsFalse && phone) {
       addressRef.current.focus();
     }
   }, [tg]);
