@@ -11,7 +11,7 @@ export function useTelegram() {
 
   const tg = window.Telegram.WebApp;
   tg.MainButton.textColor = '#ffffff';
-  tg.MainButton.color = '#be0201';
+  tg.MainButton.setParams({ color: '#be0201', textColor: '#be0201' });
   tg.setHeaderColor('#000000');
   tg.setBackgroundColor('#000000');
   tg.enableClosingConfirmation();
