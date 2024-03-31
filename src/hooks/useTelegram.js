@@ -10,6 +10,7 @@ export function useTelegram() {
   const { totalPrice } = useSelector((state) => state.items);
 
   const tg = window.Telegram.WebApp;
+  let a = 0;
   tg.MainButton.setParams({ color: '#be0201', textColor: '#be0201' });
   tg.setHeaderColor('#000000');
   tg.setBackgroundColor('#000000');
