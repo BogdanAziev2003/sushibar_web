@@ -17,6 +17,7 @@ const Addres = () => {
   const [deliveryPrice, setDeliveryPrice] = useState(0);
   const [deliveryPriceNotFound, setDeliveryPriceNotFound] = useState(false);
   const addressRef = useRef(null);
+  const houseRef = useRef(null);
 
   const optionsAuto = {
     fields: [
@@ -104,7 +105,10 @@ const Addres = () => {
   };
 
   useEffect(() => {
-    if (addressIsFalse) {
+    console.log(addressNotFound);
+    if (addressIsFalse && addressNotFound === 'Введите улицу и дом') {
+      houseRef.current.focus();
+    } else if (addressIsFalse) {
       addressRef.current.focus();
     }
   }, [addressIsFalse]);
@@ -156,6 +160,7 @@ const Addres = () => {
               id="js-Field3"
               placeholder="Коминтерна 70"
               onClick={haldleInputOnClick}
+              ref={houseRef}
             />
           </div>
           <input
