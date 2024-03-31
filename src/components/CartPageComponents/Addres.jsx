@@ -106,7 +106,7 @@ const Addres = () => {
   };
 
   useEffect(() => {
-    if (addressIsFalse && !phoneIsFalse) {
+    if (addressIsFalse && phoneIsFalse) {
       addressRef.current.focus();
     }
   }, [tg]);
