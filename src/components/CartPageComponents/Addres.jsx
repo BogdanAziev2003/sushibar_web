@@ -109,7 +109,7 @@ const Addres = () => {
     if (addressIsFalse && phone) {
       addressRef.current.focus();
     }
-  }, [tg.onEvent('mainButtonClicked')]);
+  }, [Telegram.WebApp]);
 
   return (
     <div className="input-wrapper">
