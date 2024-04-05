@@ -23,9 +23,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 300ms ease;
     .header__cart {
       display: flex;
       align-items: center;
+
+      &:active {
+        transform: scale(1.1);
+      }
+
       svg {
         width: 30px;
         height: 30px;
