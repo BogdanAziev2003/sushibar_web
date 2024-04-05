@@ -24,6 +24,13 @@
   justify-content: center;
   position: relative;
 
+  &:active {
+    svg {
+      transform: rotate(-5deg) scale(1.1);
+      transition: all 100ms ease;
+    }
+  }
+
   .search__input {
     width: 100%;
     input {

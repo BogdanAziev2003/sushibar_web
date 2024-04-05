@@ -92,10 +92,10 @@
       margin-top: 5px;
       height: 100%;
       padding: 5px;
-      transition: transform 0.25s;
+      transition: transform 0.1s;
 
       &:active {
-        transform: scale(1.5);
+        transform: scale(1.2);
       }
     }
 
@@ -285,5 +285,10 @@
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    transform: all 0.1s;
+
+    &:active {
+      opacity: 0.8;
+    }
   }
 }
