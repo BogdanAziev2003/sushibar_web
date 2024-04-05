@@ -139,13 +139,13 @@ const CartPage = () => {
       <div className={styles.order__text}>
         <p>Оформление заказа</p>
       </div>
-      <Promocod />
       {itemsInCart.some((i) => [0, 1, 2, 3, 4].includes(i.category)) && (
         <CountPribor />
       )}
       <Phone />
       <PaymentMethod />
       <DeliveryMethod />
+      <Promocod />
       <Comment />
     </div>
   );

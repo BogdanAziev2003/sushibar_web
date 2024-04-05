@@ -18,20 +18,20 @@
     }
   }
 
-  &__cart__icon {
+  &__cart__wrapper {
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    svg {
-      width: 30px;
-      height: 30px;
-      color: #be0201;
+    .header__cart {
+      display: flex;
+      align-items: center;
+      svg {
+        width: 30px;
+        height: 30px;
+        color: #be0201;
+        margin-left: 3px;
+      }
     }
-  }
-  &__count {
-    color: #be0201;
-    font-size: 15px;
   }
 }

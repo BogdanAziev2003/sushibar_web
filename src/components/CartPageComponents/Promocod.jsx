@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../../pages/CartPage/Cart.module.scss';
 
 const Promocod = () => {
+  const [value, setValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setValue(e.target.value.toUpperCase());
+  };
+
   return (
     <div className={styles.order}>
       <div className={styles.order__inner}>
@@ -14,8 +20,10 @@ const Promocod = () => {
               type="text"
               name="phone"
               id="phone"
-              maxLength={15}
+              maxLength={12}
               className={styles.input}
+              value={value}
+              onInput={handleInputChange}
             />
             <div className={styles.promocod__icon}>
               <svg
@@ -36,6 +44,7 @@ const Promocod = () => {
                 />
               </svg>
             </div>
+            <button className={styles.button}>Подтвердить</button>
           </div>
         </div>
       </div>
