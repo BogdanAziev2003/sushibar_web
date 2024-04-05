@@ -168,6 +168,12 @@
           outline: black;
         }
       }
+      &:active {
+        svg {
+          transform: scale(1.1) rotate(10deg);
+          transition: all ease;
+        }
+      }
     }
 
     &__icon {
@@ -325,6 +331,12 @@
   &__text {
     font-size: 16px;
     color: #372013;
+    &:active {
+      svg {
+        transform: scale(1.1) rotate(10deg);
+        transition: all ease;
+      }
+    }
   }
 
   &__icon {
@@ -397,6 +409,13 @@
     position: relative;
     margin-top: 5px;
     width: 100%;
+
+    &:active {
+      svg {
+        transform: scale(1.1) rotate(10deg);
+        transition: all ease;
+      }
+    }
 
     .button {
       padding: 8px;
