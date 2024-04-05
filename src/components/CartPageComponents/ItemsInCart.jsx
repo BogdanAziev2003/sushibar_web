@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,8 +12,16 @@ import {
 import ClearCart from './ClearCart';
 
 const ItemsInCart = ({ itemsInCart, totalPrice }) => {
-  const { delPrice } = useSelector((s) => s.items);
   const dispatch = useDispatch();
+  const { delPrice } = useSelector((s) => s.items);
+
+  const [presentRoll, setPressentRoll] = useState(false);
+
+  useEffect(() => {
+    if (totalPrice - delPrice >= 1500) setPressentRoll(true);
+    else setPressentRoll(false);
+  }, [totalPrice]);
+
   const handleAddItem = (item) => {
     const newItem = {
       idInCart: uuidv4(),
@@ -156,11 +164,10 @@ const ItemsInCart = ({ itemsInCart, totalPrice }) => {
             {delPrice !== 0 && (
               <>
                 +Доставка: <span>{delPrice}</span> ₽
-                <p className={styles.bill__text__total}>
-                  Итого: {totalPrice} ₽
-                </p>
               </>
             )}
+            {presentRoll && <>+Подарок 🎁</>}
+            <p className={styles.bill__text__total}>Итого: {totalPrice} ₽</p>
           </div>
         </div>
       </div>
