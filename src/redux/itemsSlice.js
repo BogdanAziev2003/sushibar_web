@@ -13,7 +13,7 @@ export const getItems = createAsyncThunk('items/getItems', async () => {
 const initialState = {
   items: [],
   itemsInCart: [],
-  totalPrice: 0,
+  itemsPrice: 0,
   delPrice: 0,
   isLoading: true,
 };
@@ -24,12 +24,12 @@ const itemsSlice = createSlice({
   reducers: {
     clearCart(state) {
       state.itemsInCart = [];
-      state.totalPrice = 0;
+      state.itemsPrice = 0;
     },
     addItem(state, action) {
       const items = action.payload;
       state.itemsInCart.push(items);
-      state.totalPrice += items.price;
+      state.itemsPrice += items.price;
     },
     removeItem(state, action) {
       const item = action.payload;
@@ -40,7 +40,7 @@ const itemsSlice = createSlice({
       if (index !== -1) {
         const deleteItem = state.itemsInCart.splice(index, 1)[0];
         state.itemsInCart = state.itemsInCart.reverse();
-        state.totalPrice -= deleteItem.price;
+        state.itemsPrice -= deleteItem.price;
       }
     },
     removeItemsByCompound(state, { payload }) {
@@ -53,27 +53,17 @@ const itemsSlice = createSlice({
           JSON.stringify(i.sizes) === JSON.stringify(item.sizes) &&
           JSON.stringify(i?.changes) === JSON.stringify(item?.changes)
         ) {
-          state.totalPrice -= i.price;
+          state.itemsPrice -= i.price;
           return false;
         }
         return true;
       });
     },
     plusDelPrice(state, { payload }) {
-      if (state.delPrice === 0) {
-        state.totalPrice += payload;
-      } else {
-        state.totalPrice = state.totalPrice - state.delPrice + payload;
-      }
       state.delPrice = payload;
     },
     delPriceInStoreNull(state) {
-      if (state.totalPrice + state.delPrice === state.delPrice) {
-        state.delPrice = 0;
-      } else {
-        state.totalPrice -= state.delPrice;
-        state.delPrice = 0;
-      }
+      state.delPrice = 0;
     },
   },
   extraReducers: (builder) => {

@@ -10,7 +10,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 const Addres = () => {
   const { tg } = useTelegram();
   const dispatch = useDispatch();
-  const { totalPrice } = useSelector((state) => state.items);
+  const { itemsPrice } = useSelector((state) => state.items);
   const { addressIsFalse } = useSelector((state) => state.errors);
   const { phone } = useSelector((s) => s.phone);
   const { delPrice } = useSelector((state) => state.delmethod);
@@ -173,10 +173,10 @@ const Addres = () => {
         <div className={styles.adress__info}>
           <button
             className={`${styles.adress__button} ${
-              totalPrice === 0 ? styles.inactiveButton : ''
+              itemsPrice === 0 ? styles.inactiveButton : ''
             }`}
             onClick={getCoordinats}
-            disabled={totalPrice === 0}
+            disabled={itemsPrice === 0}
           >
             Подтвердить
           </button>

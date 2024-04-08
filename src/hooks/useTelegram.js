@@ -7,7 +7,7 @@ export function useTelegram() {
     setPathName(window.location.pathname);
   }, [window.location.pathname]);
 
-  const { totalPrice } = useSelector((state) => state.items);
+  const { itemsPrice, delPrice } = useSelector((state) => state.items);
 
   const tg = window.Telegram.WebApp;
   tg.MainButton.textColor = '#ffffff';
@@ -18,16 +18,16 @@ export function useTelegram() {
 
   useEffect(() => {
     totalPriceButton();
-  }, [pathName, totalPrice]);
+  }, [pathName, itemsPrice, delPrice]);
 
   const totalPriceButton = () => {
-    if (totalPrice !== 0) {
+    if (itemsPrice !== 0) {
       if (pathName !== '/cart') {
         tg.MainButton.show();
-        tg.MainButton.setText(`Мой заказ: ${totalPrice} ₽`);
+        tg.MainButton.setText(`Мой заказ: ${itemsPrice + delPrice} ₽`);
       }
       if (pathName === '/cart') {
-        tg.MainButton.setText(`Заказать: ${totalPrice} ₽`);
+        tg.MainButton.setText(`Заказать: ${itemsPrice + delPrice} ₽`);
       }
     } else {
       tg.MainButton.hide();

@@ -15,11 +15,12 @@ const Layout = () => {
   const { isLoading } = useSelector((s) => s.items);
   const { open } = useSelector((s) => s.blur);
 
-  const { totalPrice } = useSelector((state) => state.items);
+  const { itemsPrice, delPrice } = useSelector((state) => state.items);
   const navigate = useNavigate();
   const { tg } = useTelegram();
   const mainButtonClick = () => {
-    if (tg.MainButton.text === `Мой заказ: ${totalPrice} ₽`) navigate('/cart');
+    if (tg.MainButton.text === `Мой заказ: ${itemsPrice + delPrice} ₽`)
+      navigate('/cart');
   };
   Telegram.WebApp.onEvent('mainButtonClicked', mainButtonClick);
 

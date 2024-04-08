@@ -38,7 +38,7 @@ const CartPage = () => {
   });
   const { phoneIsFalse, addressIsFalse } = useSelector((state) => state.errors);
   const { address, delMethod } = useSelector((state) => state.delmethod);
-  const { totalPrice, delPrice } = useSelector((state) => state.items);
+  const { itemsPrice, delPrice } = useSelector((state) => state.items);
   const { phone } = useSelector((state) => state.phone);
   const { payMethod } = useSelector((state) => state.paymethod);
   const { comment } = useSelector((state) => state.comment);
@@ -65,10 +65,10 @@ const CartPage = () => {
     }
 
     const data = {
-      totalPrice: totalPrice,
-      cartPrice: totalPrice - delPrice,
+      totalPrice: itemsPrice + delPrice,
+      itemsPrice,
       delPrice,
-      address: address,
+      address,
       count,
       phone,
       delMethod,
@@ -111,7 +111,7 @@ const CartPage = () => {
 
     tg.sendData(JSON.stringify(data));
   }, [
-    totalPrice,
+    itemsPrice,
     address,
     phone,
     delMethod,
@@ -130,10 +130,10 @@ const CartPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      {totalPrice === 0 ? (
+      {itemsPrice === 0 ? (
         <EmptyCart />
       ) : (
-        <ItemsInCart itemsInCart={itemsInCart} totalPrice={totalPrice} />
+        <ItemsInCart itemsInCart={itemsInCart} />
       )}
 
       <div className={styles.order__text}>

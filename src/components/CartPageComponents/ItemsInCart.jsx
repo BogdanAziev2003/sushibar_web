@@ -11,16 +11,16 @@ import {
 } from '../../redux/itemsSlice';
 import ClearCart from './ClearCart';
 
-const ItemsInCart = ({ itemsInCart, totalPrice }) => {
+const ItemsInCart = ({ itemsInCart }) => {
   const dispatch = useDispatch();
-  const { delPrice } = useSelector((s) => s.items);
+  const { delPrice, itemsPrice } = useSelector((s) => s.items);
 
   const [presentRoll, setPressentRoll] = useState(false);
 
   useEffect(() => {
-    if (totalPrice - delPrice >= 1500) setPressentRoll(true);
+    if (itemsPrice >= 1500) setPressentRoll(true);
     else setPressentRoll(false);
-  }, [totalPrice]);
+  }, [itemsPrice]);
 
   const handleAddItem = (item) => {
     const newItem = {
@@ -160,14 +160,14 @@ const ItemsInCart = ({ itemsInCart, totalPrice }) => {
       <div className={styles.bill}>
         <div className={styles.bill__text}>
           <div>
-            +Счет: <span>{totalPrice - delPrice}</span> ₽ <br />
+            +Счет: <span>{itemsPrice}</span> ₽ <br />
             {delPrice !== 0 && (
               <>
                 +Доставка: <span>{delPrice}</span> ₽
               </>
             )}
             {presentRoll && <>+Подарок 🎁</>}
-            <p className={styles.bill__text__total}>Итого: {totalPrice} ₽</p>
+            <p className={styles.bill__text__total}>Итого: {itemsPrice} ₽</p>
           </div>
         </div>
       </div>
