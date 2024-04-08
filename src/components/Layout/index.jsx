@@ -19,7 +19,10 @@ const Layout = () => {
   const navigate = useNavigate();
   const { tg } = useTelegram();
   const mainButtonClick = () => {
-    if (tg.MainButton.text === `Мой заказ: ${itemsPrice + delPrice} ₽`)
+    if (
+      tg.MainButton.text ===
+      `Мой заказ: ${itemsPrice >= 1000 ? itemsPrice : itemsPrice + delPrice} ₽`
+    )
       navigate('/cart');
   };
   Telegram.WebApp.onEvent('mainButtonClicked', mainButtonClick);

@@ -24,10 +24,18 @@ export function useTelegram() {
     if (itemsPrice !== 0) {
       if (pathName !== '/cart') {
         tg.MainButton.show();
-        tg.MainButton.setText(`Мой заказ: ${itemsPrice + delPrice} ₽`);
+        tg.MainButton.setText(
+          `Мой заказ: ${
+            itemsPrice >= 1000 ? itemsPrice : itemsPrice + delPrice
+          } ₽`
+        );
       }
       if (pathName === '/cart') {
-        tg.MainButton.setText(`Заказать: ${itemsPrice + delPrice} ₽`);
+        tg.MainButton.setText(
+          `Заказать: ${
+            itemsPrice >= 1000 ? itemsPrice : itemsPrice + delPrice
+          } ₽`
+        );
       }
     } else {
       tg.MainButton.hide();

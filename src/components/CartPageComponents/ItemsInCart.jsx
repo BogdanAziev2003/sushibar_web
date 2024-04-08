@@ -161,13 +161,35 @@ const ItemsInCart = ({ itemsInCart }) => {
         <div className={styles.bill__text}>
           <div>
             +Счет: <span>{itemsPrice}</span> ₽ <br />
-            {delPrice !== 0 && (
+            {itemsPrice >= 1000 ? (
               <>
-                +Доставка: <span>{delPrice}</span> ₽
+                +Бесплатная доставка
+                <br />
+              </>
+            ) : (
+              <>
+                {delPrice !== 0 && (
+                  <>
+                    +Доставка: <span>{delPrice}</span> ₽
+                  </>
+                )}
               </>
             )}
-            {presentRoll && <>+Подарок 🎁</>}
-            <p className={styles.bill__text__total}>Итого: {itemsPrice} ₽</p>
+            {presentRoll && (
+              <>
+                +Подарок 🎁
+                <br />
+              </>
+            )}
+            <p className={styles.bill__text__total}>
+              Итого:
+              {itemsPrice >= 1000 ? (
+                <>{itemsPrice}</>
+              ) : (
+                <>{itemsPrice + delPrice}</>
+              )}
+              ₽
+            </p>
           </div>
         </div>
       </div>

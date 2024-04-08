@@ -10,7 +10,9 @@ const countSlice = createSlice({
       state.count = 1;
     },
     addCount(state) {
-      state.count++;
+      if (state.count < 15) {
+        state.count++;
+      }
     },
     minusCount(state) {
       if (state.count > 1) {
