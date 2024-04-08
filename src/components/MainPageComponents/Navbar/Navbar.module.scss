@@ -25,5 +25,11 @@
   &__el_active {
     background: #be0201;
     color: #fff;
+
+    transition: all 300ms ease;
+
+    &:active {
+      transform: scale(1.02);
+    }
   }
 }
