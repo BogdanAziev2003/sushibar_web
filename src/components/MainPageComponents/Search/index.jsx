@@ -36,7 +36,7 @@ const Search = () => {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Найти блюдо"
+          placeholder="Введи название блюда"
         />
       </div>
 

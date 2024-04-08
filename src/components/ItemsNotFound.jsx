@@ -5,7 +5,9 @@ import styles from '../pages/MainPage/MainPage.module.scss';
 const ItemsNotFound = () => {
   return (
     <div className={styles.notFound}>
-      <div className={styles.notFound__title}>Ничего не найдено</div>
+      <div className={styles.notFound__title}>
+        Блюдо отсуствует, либо неверное название
+      </div>
     </div>
   );
 };
