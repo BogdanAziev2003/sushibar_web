@@ -44,7 +44,7 @@ const Promocod = () => {
                 />
               </svg>
             </div>
-            <button className={styles.button}>Подтвердить</button>
+            <button className={styles.button}>Применить</button>
           </div>
         </div>
       </div>
