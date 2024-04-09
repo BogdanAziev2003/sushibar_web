@@ -388,10 +388,23 @@
   align-items: center;
   justify-self: center;
   height: 200px;
+}
 
-  img {
-    width: 200px;
-    height: 200px;
+img {
+  width: 200px;
+  height: 200px;
+  animation: pulse 2.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
