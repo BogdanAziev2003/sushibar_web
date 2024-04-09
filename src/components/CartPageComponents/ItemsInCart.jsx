@@ -161,7 +161,7 @@ const ItemsInCart = ({ itemsInCart }) => {
         <div className={styles.bill__text}>
           <div>
             +Счет: <span>{itemsPrice}</span> ₽ <br />
-            {itemsPrice >= 1000 ? (
+            {itemsPrice >= 1000 && delPrice > 0 ? (
               <>
                 +Бесплатная доставка
                 <br />

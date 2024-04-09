@@ -6,6 +6,7 @@ import { setDeliveryMethod } from '../../redux/deliverySlice';
 import { setDelPrice } from '../../redux/deliverySlice';
 import { delPriceInStoreNull } from '../../redux/itemsSlice';
 import Addres from './Addres';
+import { setAddressError } from '../../redux/errorsSlice';
 
 const DeliveryMethod = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const DeliveryMethod = () => {
   const handleSetDelivery = (type) => {
     dispatch(setDeliveryMethod(type));
     if (type === 'pickup') {
+      dispatch(setAddressError(true));
       dispatch(delPriceInStoreNull());
       dispatch(setDelPrice(0));
     }
